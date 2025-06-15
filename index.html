@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gogula Anji Medical Orders</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #001F3F;
+      color: #fff;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #FFD700;
+    }
+    form {
+      background: #ffffff10;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 600px;
+      margin: auto;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input, select, textarea, button {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+    }
+    button {
+      background-color: #FFD700;
+      color: #000;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h1>🩺 Gogula Anji Medical Order Form</h1>
+  <form id="orderForm" onsubmit="return submitForm()">
+    <label>Full Name:</label>
+    <input type="text" required>
+
+    <label>Mobile Number:</label>
+    <input type="tel" required pattern="[0-9]{10}" placeholder="9876543210">
+
+    <label>Age:</label>
+    <input type="number" min="0" required>
+
+    <label>Gender:</label>
+    <select required>
+      <option value="">Select Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <label>Patient Age Group:</label>
+    <select id="ageGroup" onchange="showMedicines()">
+      <option value="adult">Adult (10+ years)</option>
+      <option value="child">Child (<10 years)</option>
+    </select>
+
+    <label>Category:</label>
+    <select id="category" onchange="showMedicines()">
+      <option value="cold">Cold & Allergy</option>
+      <option value="cough">Cough</option>
+      <option value="fever">Fever</option>
+      <option value="pain">Pain & Body Ache</option>
+      <option value="headache">Headache</option>
+      <option value="stomach">Stomach Pain / Acidity</option>
+    </select>
+
+    <label>Medicine:</label>
+    <select id="medicine"></select>
+
+    <label>Quantity:</label>
+    <input type="number" min="1" required>
+
+    <h3>📍 Delivery Address</h3>
+    <label>State:</label>
+    <input type="text" required>
+
+    <label>District:</label>
+    <input type="text" required>
+
+    <label>Mandal / Sub-district:</label>
+    <input type="text" required>
+
+    <label>PIN Code:</label>
+    <input type="text" pattern="[0-9]{6}" required>
+
+    <label>Street / Area:</label>
+    <input type="text" required>
+
+    <label>Google Maps Live Location Link:</label>
+    <input type="url" placeholder="https://maps.google.com/...">
+
+    <h3>💰 Payment Method</h3>
+    <select required>
+      <option>Google Pay / PhonePe / Paytm (UPI)</option>
+      <option>Cash on Delivery</option>
+    </select>
+
+    <label>If UPI, enter your UPI ID:</label>
+    <input type="text" placeholder="example@upi">
+
+    <button type="submit">Submit Order</button>
+  </form>
+
+  <footer>
+    ⚕️ Jai Hanuman | Powered by Gogula Anji Medical
+  </footer>
+
+  <script>
+    const medicines = {
+      adult: {
+        cold: ["L-Hist Mont", "Cetrizine", "Montelukast", "Levocetirizine"],
+        cough: ["Benadryl", "Dextromethorphan", "Ascoril-D", "Grilinctus"],
+        fever: ["Dolo 650", "Crocin", "Paracetamol", "Calpol 650"],
+        pain: ["Combiflam", "Zerodol-SP", "Aceclo-P", "Ibugesic"],
+        headache: ["Saridon", "Anacin", "Migrainean"],
+        stomach: ["Omez", "Pan 40", "Cyclopam", "Rantac"]
+      },
+      child: {
+        cold: ["Junior L-Hist Mont", "Sinarest-AF", "T-Minic Drops"],
+        cough: ["Ascoril LS Junior", "Alex Junior", "Ambrodil-S Syrup"],
+        fever: ["Crocin DS", "Calpol 250", "Dolo 125"],
+        pain: ["Meftal-P", "Ibugesic Plus", "Cyclopam Drops"],
+        headache: ["N/A"],
+        stomach: ["Cyclopam Drops", "Rantac Drops"]
+      }
+    };
+
+    function showMedicines() {
+      const ageGroup = document.getElementById('ageGroup').value;
+      const category = document.getElementById('category').value;
+      const medSelect = document.getElementById('medicine');
+
+      medSelect.innerHTML = '';
+      medicines[ageGroup][category].forEach(med => {
+        const option = document.createElement('option');
+        option.text = med;
+        medSelect.add(option);
+      });
+    }
+
+    function submitForm() {
+      alert("✅ Thank you! Your order has been received.");
+      return false;
+    }
+
+    window.onload = showMedicines;
+  </script>
+</body>
+</html>
