@@ -1,95 +1,163 @@
-<form action="https://formsubmit.co/anjigogula27@gmail.com" method="POST">
-  <h2>🧍 Personal Details</h2>
-  <label>Full Name: <input type="text" name="name" required></label><br>
-  <label>Mobile Number: <input type="tel" name="mobile" required></label><br>
-  <label>Age: <input type="number" name="age" required></label><br>
-  <label>Gender:
-    <select name="gender" required>
-      <option value="">-- Select --</option>
-      <option>Male</option>
-      <option>Female</option>
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gogula Anji Worlds - Order Portal</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0a0f3d;
+      color: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      background-color: #ffffff;
+      color: #000000;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+    h1, h2 {
+      text-align: center;
+      color: #0a0f3d;
+    }
+    label {
+      display: block;
+      margin: 12px 0 6px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+    }
+    button {
+      background-color: #0a0f3d;
+      color: #ffffff;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      width: 100%;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #061035;
+    }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Gogula Anji Worlds</h1>
+    <h2>Medical Order & Doctor Appointment</h2><form action="https://formsubmit.co/anjigogula27@gmail.com" method="POST">
+  <h3>👤 Personal Details</h3>
+  <label for="name">Full Name:</label>
+  <input type="text" name="name" required />
+
+  <label for="mobile">Mobile Number:</label>
+  <input type="tel" name="mobile" required />
+
+  <label for="age">Age:</label>
+  <input type="number" name="age" required />
+
+  <label for="gender">Gender:</label>
+  <select name="gender" required>
+    <option value="">-- Select Gender --</option>
+    <option>Male</option>
+    <option>Female</option>
+    <option>Other</option>
+  </select>
+
+  <label for="service">Service Type:</label>
+  <select name="service" id="serviceType" onchange="toggleServiceFields()" required>
+    <option value="">-- Select --</option>
+    <option value="Medical">Medical Order</option>
+    <option value="Doctor">Doctor Appointment</option>
+  </select>
+
+  <div id="medicalFields" class="hidden">
+    <label>Medicine Category:</label>
+    <select name="category" id="categorySelect" onchange="toggleOtherCategory()">
+      <option value="">-- Select Category --</option>
+      <option>Cold & Cough</option>
+      <option>Fever</option>
+      <option>Pain Relief</option>
+      <option>Allergy</option>
+      <option>Digestive</option>
       <option>Other</option>
     </select>
-  </label><br><br>
-
-  <h2>💊 Select Service</h2>
-  <label>Choose Option:
-    <select name="service" id="serviceType" onchange="toggleServiceFields()" required>
-      <option value="">-- Select --</option>
-      <option value="Medical">Medical Order</option>
-      <option value="Doctor">Doctor Appointment</option>
-    </select>
-  </label><br><br>
-
-  <div id="medicalFields" style="display:none;">
-    <label>Medicine Category:
-      <select name="category" id="categorySelect" onchange="toggleOtherCategory()" required>
-        <option value="">-- Select --</option>
-        <option>Cold & Cough</option>
-        <option>Fever</option>
-        <option>Pain Relief</option>
-        <option>Allergy</option>
-        <option>Digestive</option>
-        <option>Other</option>
-      </select>
-    </label><br>
-
-    <div id="otherCategoryDiv" style="display:none;">
-      <label>Enter Category: <input type="text" name="custom_category"></label><br>
+    <div id="otherCategoryDiv" class="hidden">
+      <label>Enter Custom Category:</label>
+      <input type="text" name="custom_category" />
     </div>
 
-    <label>Medicine Name:
-      <select name="medicine">
-        <option>Paracetamol</option>
-        <option>Montelukast</option>
-        <option>Sinarest</option>
-        <option>Dolopar</option>
-        <option>Citrazine</option>
-        <option>Others</option>
-      </select>
-    </label><br>
-  </div>
-
-  <div id="doctorFields" style="display:none;">
-    <p><strong>Doctor:</strong> Dr. Ramesh Babu (RMB) - 9:30 AM to 6:30 PM (Sunday closed)</p>
-    <label>Preferred Appointment Time: <input type="time" name="appointment_time"></label><br>
-  </div>
-
-  <br><h2>📍 Address Details</h2>
-  <label>State: <input type="text" name="state" required></label><br>
-  <label>District: <input type="text" name="district" required></label><br>
-  <label>Subdivision (Mandal): <input type="text" name="mandal" required></label><br>
-  <label>Pin Code: <input type="number" name="pincode" required></label><br>
-  <label>Street & Area: <input type="text" name="street_area" required></label><br>
-  <label>Live Location (optional): <input type="url" name="live_location" placeholder="Paste Google Maps link"></label><br>
-
-  <br><h2>💰 Payment</h2>
-  <label>Payment Method:
-    <select name="payment" required>
-      <option>Cash on Delivery</option>
-      <option>Google Pay</option>
-      <option>PhonePe</option>
-      <option>Paytm</option>
+    <label>Medicine Name:</label>
+    <select name="medicine">
+      <option>Paracetamol</option>
+      <option>Montelukast</option>
+      <option>Sinarest</option>
+      <option>Dolopar</option>
+      <option>Citrazine</option>
       <option>Others</option>
     </select>
-  </label><br><br>
+  </div>
 
-  <!-- Hidden: redirect after submit -->
-  <input type="hidden" name="_next" value="https://gogulaanji.github.io/gogula-anji-worlds/thank-you.html">
-  <input type="hidden" name="_captcha" value="false">
+  <div id="doctorFields" class="hidden">
+    <p><strong>Doctor:</strong> Dr. Ramesh Babu (RMB)<br>⏰ Time: 9:30 AM - 6:30 PM (Sunday Closed)</p>
+    <label>Preferred Appointment Time:</label>
+    <input type="time" name="appointment_time" />
+  </div>
 
-  <button type="submit">Submit</button>
+  <h3>📍 Delivery Address</h3>
+  <label>State:</label>
+  <input type="text" name="state" required />
+
+  <label>District:</label>
+  <input type="text" name="district" required />
+
+  <label>Subdivision (Mandal):</label>
+  <input type="text" name="mandal" required />
+
+  <label>Pin Code:</label>
+  <input type="number" name="pincode" required />
+
+  <label>Street & Area:</label>
+  <input type="text" name="street_area" required />
+
+  <label>Live Location (Google Maps URL):</label>
+  <input type="url" name="live_location" placeholder="Paste Google Maps link" />
+
+  <h3>💳 Payment Method</h3>
+  <select name="payment" required>
+    <option>Cash on Delivery</option>
+    <option>Google Pay</option>
+    <option>PhonePe</option>
+    <option>Paytm</option>
+    <option>Others</option>
+  </select>
+
+  <input type="hidden" name="_next" value="https://gogulaanji.github.io/gogula-anji-worlds/thank-you.html" />
+  <input type="hidden" name="_captcha" value="false" />
+
+  <button type="submit">Submit Order</button>
 </form>
 
-<script>
-  function toggleServiceFields() {
-    const service = document.getElementById('serviceType').value;
-    document.getElementById('medicalFields').style.display = service === 'Medical' ? 'block' : 'none';
-    document.getElementById('doctorFields').style.display = service === 'Doctor' ? 'block' : 'none';
-  }
+  </div>  <script>
+    function toggleServiceFields() {
+      const service = document.getElementById('serviceType').value;
+      document.getElementById('medicalFields').classList.toggle('hidden', service !== 'Medical');
+      document.getElementById('doctorFields').classList.toggle('hidden', service !== 'Doctor');
+    }
 
-  function toggleOtherCategory() {
-    const category = document.getElementById('categorySelect').value;
-    document.getElementById('otherCategoryDiv').style.display = category === 'Other' ? 'block' : 'none';
-  }
-</script>
+    function toggleOtherCategory() {
+      const cat = document.getElementById('categorySelect').value;
+      document.getElementById('otherCategoryDiv').classList.toggle('hidden', cat !== 'Other');
+    }
+  </script></body>
+</html>
