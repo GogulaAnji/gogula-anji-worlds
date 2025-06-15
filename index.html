@@ -39,6 +39,9 @@
     #medicalForm, #appointmentForm {
       display: none;
     }
+    #customCategory {
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -67,11 +70,12 @@
 <select><option>Adult</option><option>Child (<10 years)</option></select>
 
 <label>Medicine Category:</label>
-<select>
+<select id="categorySelector" onchange="toggleCustomCategory()">
   <option>Fever</option><option>Cold & Cough</option>
   <option>Pain Relief</option><option>Allergy</option>
-  <option>Child Medicines</option><option>Others</option>
+  <option>Child Medicines</option><option value="other">Other</option>
 </select>
+<input type="text" id="customCategory" placeholder="Enter custom category">
 
 <label>Medicine Name:</label>
 <select>
@@ -118,6 +122,12 @@
       const selection = document.getElementById("serviceSelector").value;
       document.getElementById("medicalForm").style.display = selection === "medical" ? "block" : "none";
       document.getElementById("appointmentForm").style.display = selection === "appointment" ? "block" : "none";
+    }
+
+    function toggleCustomCategory() {
+      const category = document.getElementById("categorySelector").value;
+      const customField = document.getElementById("customCategory");
+      customField.style.display = category === "other" ? "block" : "none";
     }
   </script></body>
 </html>
